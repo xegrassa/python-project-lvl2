@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "egrassa_gendiff"
+version = "0.0.1"
+description = "my project lvl 2"
+authors = ["Egrassa <bacek90@mail.ru>"]
+classifiers = [
+	"Development Status :: 5 - Production/Stable",
+	"Natural Language :: Russian",
+	"Programming Language :: Python :: 3.6"
+]
+repository = "https://github.com/xegrassa/python-project-lvl1"
+packages = [
+    { include = "gendiff" },
+  ]
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7"
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

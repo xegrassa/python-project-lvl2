@@ -1,0 +1,9 @@
+language: python
+python:
+  - "3.6.8"
+install:
+  - pip install poetry
+  - python -m pip install flake8
+script:
+  - make lint
+  # pip install -r requirements.txt
