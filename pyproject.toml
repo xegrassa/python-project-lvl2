@@ -8,7 +8,7 @@ classifiers = [
 	"Natural Language :: Russian",
 	"Programming Language :: Python :: 3.6"
 ]
-repository = "https://github.com/xegrassa/python-project-lvl1"
+repository = "https://github.com/xegrassa/python-project-lvl2"
 packages = [
     { include = "gendiff" },
   ]

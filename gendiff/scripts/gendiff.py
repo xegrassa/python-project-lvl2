@@ -2,11 +2,11 @@ import argparse
 
 
 def main():
-    USAGE = 'usage: gendiff [-h] [-f FORMAT] first_file second_file'
-    parser = argparse.ArgumentParser(usage=USAGE, description='Generate diff')
+    
+    parser = argparse.ArgumentParser(description='Generate diff')
     parser.add_argument('first_file')
     parser.add_argument('second_file')
-    parser.add_argument('-f', '--format', help=argparse.SUPPRESS)
+    parser.add_argument('-f', '--format', help="set format of output")
     parser.parse_args()
 
 
