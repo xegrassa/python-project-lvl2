@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "egrassa_gendiff"
-version = "0.0.1"
+version = "0.0.7"
 description = "my project lvl 2"
 authors = ["Egrassa <bacek90@mail.ru>"]
 classifiers = [

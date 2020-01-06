@@ -2,3 +2,4 @@
 .venv
 egrassa_gendiff.egg-info
 dist
+*.json
