@@ -14,4 +14,5 @@ script:
   - make lint
   - make test
 after_script:
-  - ./cc-test-reporter after-build --id 3053fc27a22e48cd4ec418eb6cee69de0943bf505eaf1eff6d5202c7b16d948e --exit-code $TRAVIS_TEST_RESULT
+  - coverage xml
+  - ./cc-test-reporter after-build --coverage-input-type coverage.xml --id 3053fc27a22e48cd4ec418eb6cee69de0943bf505eaf1eff6d5202c7b16d948e --exit-code $TRAVIS_TEST_RESULT
