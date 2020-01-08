@@ -3,3 +3,4 @@
 egrassa_gendiff.egg-info
 dist
 *.json
+__pycache__
