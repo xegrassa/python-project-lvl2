@@ -4,8 +4,9 @@ install:
 lint:
 	poetry run flake8 gendiff
 test:
-	coverage run -m pytest
-	coverage report
+	pytest --cov=gendiff tests/
+	#coverage run -m pytest
+	#coverage report
 instgendiff:
 	pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ egrassa-gendiff
 del:

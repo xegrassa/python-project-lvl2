@@ -6,6 +6,7 @@ install:
   - python -m pip install flake8
   - python -m pip install -U pytest
   - python -m pip install coverage
+  - python -m pip install pytest-cov
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
