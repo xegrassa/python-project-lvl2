@@ -5,7 +5,13 @@ install:
   - python -m pip install poetry
   - python -m pip install flake8
   - python -m pip install -U pytest
+  - python -m pip install coverage
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - make lint
   - make test
-  # pip install -r requirements.txt
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
