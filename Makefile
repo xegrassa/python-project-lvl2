@@ -4,7 +4,7 @@ install:
 lint:
 	poetry run flake8 gendiff
 test:
-	pytest --cov=gendiff tests/
+	pytest --cov=/home/travis/build/xegrassa/python-project-lvl2  tests/
 	#coverage run -m pytest
 	#coverage report
 instgendiff:
