@@ -1,4 +1,4 @@
-from gendiff import generate_diff
+from gendiff.scripts.gendiff import generate_diff
 
 
 path_file1 = 'tests/fixtures/before.json'
