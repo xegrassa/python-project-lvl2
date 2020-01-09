@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "egrassa_gendiff"
-version = "0.4.1"
+version = "0.5.0"
 description = "my project lvl 2"
 authors = ["Egrassa <bacek90@mail.ru>"]
 classifiers = [
@@ -16,9 +16,13 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
+PyYAML = "^5.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7"
+pytest = "^5.3"
+coverage = "^4.5"
+pytest-cov = "^2.8"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
