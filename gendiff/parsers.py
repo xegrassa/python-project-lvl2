@@ -3,15 +3,20 @@ import yaml
 
 
 def is_json(path_file):
-	if path_file[path_file.rfind('.'):] == '.json': return True
-	return False
+    if path_file[path_file.rfind('.'):] == '.json':
+        return True
+    return False
+
 
 def parse_file(path_file, is_json):
-	if is_json: return json.load(open(path_file))
-	return yaml.safe_load(open(path_file))
+    if is_json:
+        return json.load(open(path_file))
+    return yaml.safe_load(open(path_file))
+
 
 def gen_key(key, operator=' '):
-	return "    {} {}: {}\n".format(operator, key[0], key[1])
+    return "    {} {}: {}\n".format(operator, key[0], key[1])
+
 
 def generate_diff(path_to_file1, path_to_file2):
     file1 = parse_file(path_to_file1, is_json(path_to_file1))
@@ -25,13 +30,13 @@ def generate_diff(path_to_file1, path_to_file2):
     set_changing = (set(file1) & set(file2)) - set(dict(set_no_change).keys())
     diff = "{\n"
     for i in set_no_change:
-    	diff += gen_key(i)
+        diff += gen_key(i)
     for i in set_adding:
-    	diff += gen_key(i, '+')
+        diff += gen_key(i, '+')
     for i in set_changing:
         diff += "    - {}: {}\n".format(i, file1[i])
         diff += "    + {}: {}\n".format(i, file2[i])
     for i in set_deleting:
-    	diff += gen_key(i, '-')
+        diff += gen_key(i, '-')
     diff += "}"
     return diff
