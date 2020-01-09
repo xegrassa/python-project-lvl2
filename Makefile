@@ -4,9 +4,7 @@ install:
 lint:
 	poetry run flake8 gendiff
 test:
-	pytest --cov=/home/travis/build/xegrassa/python-project-lvl2  tests/
-	#coverage run -m pytest
-	#coverage report
+	poetry run pytest --cov=tests
 instgendiff:
 	pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ egrassa-gendiff
 del:

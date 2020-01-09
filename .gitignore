@@ -1,5 +1,6 @@
 .python-version
 .venv
+.coverage
 egrassa_gendiff.egg-info
 dist
 __pycache__/
