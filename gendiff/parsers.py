@@ -42,9 +42,8 @@ def generate_diff(file1, file2):
 def render_classic(diff, deep=1):
     indent = '    ' * deep
     render = '{\n'
-    try:
-        for key in diff:
-
+    for key in diff:
+        if isinstance(diff[key], (dict, list)):
             if isinstance(diff[key], list):
                 render += gen_single_string(key, diff[key][0], indent)
                 render += gen_single_string(key, diff[key][1], indent)
@@ -54,7 +53,7 @@ def render_classic(diff, deep=1):
                 render += render_classic(diff[key]['value'], deep + 1)
             else:
                 render += gen_single_string(key, diff[key], indent)
-    except:
-        render += "{}{}: {}\n".format(indent, key, diff[key])
+        else:
+            render += "{}{}: {}\n".format(indent, key, diff[key])
     render += indent[:-4] + '}\n'
     return render

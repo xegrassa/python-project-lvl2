@@ -7,3 +7,6 @@
 
 5-step
 [![asciicast](https://asciinema.org/a/292649.svg)](https://asciinema.org/a/292649)
+
+6-step
+[![asciicast](https://asciinema.org/a/293788.svg)](https://asciinema.org/a/293788)
