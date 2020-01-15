@@ -1,12 +1,18 @@
 from gendiff.parsers import generate_diff
+from gendiff.parsers import parse_file
+from gendiff.parsers import render_classic
 
 
-path_file1 = 'tests/fixtures/before.json'
-path_file2 = 'tests/fixtures/after.json'
-path_file3 = 'tests/fixtures/before.yaml'
-path_file4 = 'tests/fixtures/after.yaml'
-correct_answer = open('tests/fixtures/correct_answer').read().rstrip()
+file1 = parse_file('tests/fixtures/before.json')
+file2 = parse_file('tests/fixtures/after.json')
+file3 = parse_file('tests/fixtures/before.yaml')
+file4 = parse_file('tests/fixtures/after.yaml')
+file5 = parse_file('tests/fixtures/before1.json')
+file6 = parse_file('tests/fixtures/after1.json')
+correct_answer = open('tests/fixtures/correct_answer').read()
+correct_answer1 = open('tests/fixtures/correct_answer1').read()
 
 def test_generate_diff():
-	assert generate_diff(path_file1, path_file2) == correct_answer
-	assert generate_diff(path_file3, path_file4) == correct_answer
+	assert render_classic(generate_diff(file1, file2)) == correct_answer
+	assert render_classic(generate_diff(file3, file4)) == correct_answer
+	assert render_classic(generate_diff(file5, file6)) == correct_answer1

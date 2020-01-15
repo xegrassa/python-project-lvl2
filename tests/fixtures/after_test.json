@@ -1,0 +1,8 @@
+{
+  "timeout": 20,
+  "verbose": true,
+  "host": "hexlet.io",
+  "group3": {
+    "fee": "100500"
+  }
+}
