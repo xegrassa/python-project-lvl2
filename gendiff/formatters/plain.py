@@ -1,26 +1,31 @@
-def render_plain(a):
-	print('zawli kyda nado')
-
-# def gen_single_string(key, value, indent):
-#     return "{}{}{}: {}\n".format(indent[:-2], value['change_prefix'],
-#                                  key, value['value'])
+def gen_string_del(key):
+    return "Property '{}' was removed\n".format(key)
 
 
-# def render_text(diff, deep=1):
-#     indent = '    ' * deep
-#     render = '{\n'
-#     for key in diff:
-#         if isinstance(diff[key], (dict, list)):
-#             if isinstance(diff[key], list):
-#                 render += gen_single_string(key, diff[key][0], indent)
-#                 render += gen_single_string(key, diff[key][1], indent)
-#             elif isinstance(diff[key].get('value', False), dict):
-#                 render += "{}{}{}: ".format(indent[:-2],
-#                                             diff[key]['change_prefix'], key)
-#                 render += render_text(diff[key]['value'], deep + 1)
-#             else:
-#                 render += gen_single_string(key, diff[key], indent)
-#         else:
-#             render += "{}{}: {}\n".format(indent, key, diff[key])
-#     render += indent[:-4] + '}\n'
-#     return render
+def gen_string_add(key, value):
+    if isinstance(value, dict):
+        value = 'complex value'
+    return "Property '{}' was added with value: '{}'\n".format(key, value)
+
+
+def gen_string_change(key, value):
+    return "Property '{}' was changed. From '{}' to '{}'\n"\
+            .format(key, value[1]['value'], value[0]['value'])
+
+
+def render_plain(diff, path_key=''):
+    render = ''
+    if path_key:
+        path_key = path_key + '.'
+    for key in diff:
+        if isinstance(diff[key], dict):
+            if diff[key]['change'] == 'del':
+                render += gen_string_del(path_key+key)
+            if diff[key]['change'] == 'add':
+                render += gen_string_add(path_key+key, diff[key]['value'])
+            if (diff[key]['change'] == 'not' and
+                    isinstance(diff[key]['value'], dict)):
+                render += render_plain(diff[key]['value'], path_key+key)
+        elif isinstance(diff[key], list):
+            render += gen_string_change(path_key+key, diff[key])
+    return render

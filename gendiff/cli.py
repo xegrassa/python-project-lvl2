@@ -15,13 +15,13 @@ def main():
     file1 = parsers.parse_file(args.first_file)
     file2 = parsers.parse_file(args.second_file)
     diff_beetwen_files = gendiff.generate_diff(file1, file2)
-    if args.format == None:
-        print(render_text(diff_beetwen_files))
-    elif args.format == 'plain':
+    if args.format == 'plain':
         print(render_plain(diff_beetwen_files))
     elif args.format == 'json':
         print(render_json(diff_beetwen_files))
-    
+    else:
+        print(render_text(diff_beetwen_files))
+
 
 if __name__ == '__main__':
     main()
