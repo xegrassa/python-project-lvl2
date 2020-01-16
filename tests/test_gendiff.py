@@ -1,6 +1,6 @@
-from gendiff.parsers import generate_diff
+from gendiff import generate_diff
 from gendiff.parsers import parse_file
-from gendiff.parsers import render_classic
+from gendiff.formatters.text import render_text
 
 
 file1 = parse_file('tests/fixtures/before.json')
@@ -13,6 +13,6 @@ correct_answer = open('tests/fixtures/correct_answer').read()
 correct_answer1 = open('tests/fixtures/correct_answer1').read()
 
 def test_generate_diff():
-	assert render_classic(generate_diff(file1, file2)) == correct_answer
-	assert render_classic(generate_diff(file3, file4)) == correct_answer
-	assert render_classic(generate_diff(file5, file6)) == correct_answer1
+	assert render_text(generate_diff(file1, file2)) == correct_answer
+	assert render_text(generate_diff(file3, file4)) == correct_answer
+	assert render_text(generate_diff(file5, file6)) == correct_answer1
