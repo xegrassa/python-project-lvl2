@@ -13,3 +13,6 @@
 
 7-step
 [![asciicast](https://asciinema.org/a/294066.svg)](https://asciinema.org/a/294066)
+
+8-step
+[![asciicast](https://asciinema.org/a/294423.svg)](https://asciinema.org/a/294423)

@@ -1,2 +1,5 @@
-def render_json(a):
-    pass
+import json
+
+
+def render_json(diff):
+    return json.dumps(diff, indent=4)
