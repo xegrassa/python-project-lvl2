@@ -3,29 +3,36 @@ from gendiff.parsers import parse_file
 from gendiff.formatters.text import render_text
 from gendiff.formatters.plain import render_plain
 from gendiff.formatters.json import render_json
+import pytest
 
 
+path_files = [('tests/fixtures/before.json', 'tests/fixtures/after.json', 'tests/fixtures/correct_answer'),
+              ('tests/fixtures/before.yaml', 'tests/fixtures/after.yaml', 'tests/fixtures/correct_answer'),
+              ('tests/fixtures/before1.json', 'tests/fixtures/after1.json', 'tests/fixtures/correct_answer1')]
+path_files1 = [('tests/fixtures/before1.json', 'tests/fixtures/after1.json', 'tests/fixtures/correct_answer_plain_1')]
+path_files2 = [('tests/fixtures/before1.json', 'tests/fixtures/after1.json', 'tests/fixtures/correct_answer_json_1')]
 
-file1 = parse_file('tests/fixtures/before.json')
-file2 = parse_file('tests/fixtures/after.json')
-file3 = parse_file('tests/fixtures/before.yaml')
-file4 = parse_file('tests/fixtures/after.yaml')
-file5 = parse_file('tests/fixtures/before1.json')
-file6 = parse_file('tests/fixtures/after1.json')
-correct_answer = open('tests/fixtures/correct_answer').read()
-correct_answer1 = open('tests/fixtures/correct_answer1').read()
-correct_answer_plain_1 = open('tests/fixtures/correct_answer_plain_1').read()
-correct_answer_json_1 = open('tests/fixtures/correct_answer_json_1').read().rstrip()
-
-def test_generate_diff():
-	assert render_text(generate_diff(file1, file2)) == correct_answer
-	assert render_text(generate_diff(file3, file4)) == correct_answer
-	assert render_text(generate_diff(file5, file6)) == correct_answer1
+def prepare_test(path_file_before,
+                 path_file_after,
+                 path_file_correct_answer):
+    parse_file1 = parse_file(path_file_before)
+    parse_file2 = parse_file(path_file_after)
+    correct_answer = open(path_file_correct_answer).read()
+    diff = generate_diff(parse_file1, parse_file2)
+    return diff, correct_answer
 
 
-def test_render_plain():
-	assert render_plain(generate_diff(file5, file6)) == correct_answer_plain_1
+@pytest.mark.parametrize('path_file1, path_file2, path_answer', path_files)
+def test_render_text(path_file1, path_file2, path_answer):
+    diff , correct_answer = prepare_test(path_file1, path_file2, path_answer)
+    assert render_text(diff) == correct_answer
 
+@pytest.mark.parametrize('path_file1, path_file2, path_answer', path_files1)
+def test_render_plain(path_file1, path_file2, path_answer):
+    diff , correct_answer = prepare_test(path_file1, path_file2, path_answer)
+    assert render_plain(diff) == correct_answer
 
-def test_render_json():
-	assert render_json(generate_diff(file5, file6)) == correct_answer_json_1
+@pytest.mark.parametrize('path_file1, path_file2, path_answer', path_files2)
+def test_render_json(path_file1, path_file2, path_answer):
+    diff , correct_answer = prepare_test(path_file1, path_file2, path_answer)
+    assert render_json(diff) == correct_answer.rstrip()
