@@ -1,1 +1,1 @@
-from gendiff.gendiff import generate_diff # noqa
+from gendiff.scripts.gendiff import generate_diff # noqa

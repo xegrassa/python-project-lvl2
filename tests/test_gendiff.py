@@ -1,8 +1,8 @@
-from gendiff.gendiff import generate_diff
+from gendiff.scripts.gendiff import generate_diff
 from gendiff.parsers import parse_file
-from gendiff.formatters.text import render_text
-from gendiff.formatters.plain import render_plain
-from gendiff.formatters.json import render_json
+from gendiff.format.text import render_text
+from gendiff.format.plain import render_plain
+from gendiff.format.json import render_json
 import pytest
 
 

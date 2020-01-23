@@ -1,14 +1,12 @@
 import json
 import yaml
+import os.path
 
 
-def is_json(path_file):
-    if path_file[path_file.rfind('.'):] == '.json':
-        return True
-    return False
+JSON = '.json'
 
 
 def parse_file(path_file):
-    if is_json(path_file):
-        return json.load(open(path_file))
-    return yaml.safe_load(open(path_file))
+    is_json = os.path.splitext(path_file)[1] == JSON
+    loader = json.load if is_json else yaml.safe_load
+    return loader(open(path_file))
