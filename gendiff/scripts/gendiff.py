@@ -1,26 +1,54 @@
 import argparse
+import os.path
 from gendiff import parsers
 from gendiff import format
-import os.path
+
+
+# def generate_diff(file1, file2):
+#     diff = {}
+#     for key in file1:
+#         if key in file2:
+#             if isinstance(file1[key], dict) and isinstance(file2[key], dict):
+#                 diff[key] = {'value': generate_diff(file1[key], file2[key]),
+#                              'change': 'not'}
+#             elif file1[key] != file2[key]:
+#                 diff[key] = [{'value': file2[key], 'change': 'add'},
+#                              {'value': file1[key], 'change': 'del'}]
+#             elif file1[key] == file2[key]:
+#                 diff[key] = {'value': file1[key], 'change': 'not'}
+#         else:
+#             diff[key] = {'value': file1[key], 'change': 'del'}
+#     for key in file2:
+#         if key not in file1:
+#             diff[key] = {'value': file2[key], 'change': 'add'}
+#     return diff
+ADD = 'add'
+DEL = 'del'
+NOT = 'not'
+
+
+def gen_key_process(file, keys, change):
+    record_to_diff = dict(map(lambda key: (key, (file[key], change)), keys))
+    return record_to_diff
 
 
 def generate_diff(file1, file2):
+
     diff = {}
-    for key in file1:
-        if key in file2:
-            if isinstance(file1[key], dict) and isinstance(file2[key], dict):
-                diff[key] = {'value': generate_diff(file1[key], file2[key]),
-                             'change': 'not'}
-            elif file1[key] != file2[key]:
-                diff[key] = [{'value': file2[key], 'change': 'add'},
-                             {'value': file1[key], 'change': 'del'}]
-            elif file1[key] == file2[key]:
-                diff[key] = {'value': file1[key], 'change': 'not'}
-        else:
-            diff[key] = {'value': file1[key], 'change': 'del'}
-    for key in file2:
-        if key not in file1:
-            diff[key] = {'value': file2[key], 'change': 'add'}
+    keys_first_pars_obj = set(file1.keys())
+    keys_second_pars_obj = set(file2.keys())
+    del_keys = keys_first_pars_obj.difference(keys_second_pars_obj)
+    add_keys = keys_second_pars_obj.difference(keys_first_pars_obj)
+    # equal_keys = set(file1.items()).intersection(set(file2.items()))
+    x = [(key,value) for (key,value) in file1.items() if key in file2.keys()]
+
+    # for key in equal_keys:
+    #     if isinstance(file1[key],dict) and isinstance(file2[key], dict):
+    #         diff.update(generate_diff(file1[key], file2[key]))
+    diff.update(gen_key_process(file1, del_keys, DEL))
+    diff.update(gen_key_process(file2, add_keys, ADD))
+
+    print(x)
     return diff
 
 
@@ -34,9 +62,9 @@ def main():
     args = parser.parse_args()
     file1 = parsers.parse_file(args.first_file)
     file2 = parsers.parse_file(args.second_file)
-    diff = generate_diff(file1, file2)
-    print(args.format(diff))
-    print(os.path.splitext(args.first_file)[1])
+    # diff = generate_diff(file1, file2)
+    # print(args.format(diff))
+    print(generate_diff(file1, file2))
 
 
 if __name__ == '__main__':
