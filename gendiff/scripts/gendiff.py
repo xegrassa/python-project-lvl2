@@ -25,6 +25,7 @@ from gendiff import format
 ADD = 'add'
 DEL = 'del'
 NOT = 'not'
+CHG = 'change'
 
 
 def gen_key_process(file, keys, change):
@@ -33,22 +34,23 @@ def gen_key_process(file, keys, change):
 
 
 def generate_diff(file1, file2):
-
     diff = {}
     keys_first_pars_obj = set(file1.keys())
     keys_second_pars_obj = set(file2.keys())
     del_keys = keys_first_pars_obj.difference(keys_second_pars_obj)
     add_keys = keys_second_pars_obj.difference(keys_first_pars_obj)
-    # equal_keys = set(file1.items()).intersection(set(file2.items()))
-    x = [(key,value) for (key,value) in file1.items() if key in file2.keys()]
+    equal_keys = set(file1.keys()).intersection(set(file2.keys()))
 
-    # for key in equal_keys:
-    #     if isinstance(file1[key],dict) and isinstance(file2[key], dict):
-    #         diff.update(generate_diff(file1[key], file2[key]))
+    for key in equal_keys:
+        if isinstance(file1[key],dict) and isinstance(file2[key], dict):
+            diff.update({key: (generate_diff(file1[key], file2[key]), NOT)})
+        elif file1[key] == file2[key]:
+            diff.update(gen_key_process(file1, (key,), NOT))
+        else:
+            diff.update({key: ((file1[key], file2[key]), CHG)})
+
     diff.update(gen_key_process(file1, del_keys, DEL))
     diff.update(gen_key_process(file2, add_keys, ADD))
-
-    print(x)
     return diff
 
 
