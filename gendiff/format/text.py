@@ -1,3 +1,7 @@
+from gendiff.factory import get_value
+from gendiff.factory import get_status
+
+
 def gen_single_string(key, value, indent):
     if value['change'] == 'add':
         prefix = '+ '
