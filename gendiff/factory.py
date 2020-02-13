@@ -1,5 +1,13 @@
+ADD = 'add'
+DEL = 'del'
+NOT = 'not'
+CHG = 'change'
+
+
 def get_value(diff, key):
-    return diff[key][0]
+    if isinstance(diff[key], tuple):
+        return diff[key][0]
+    return diff[key]
 
 
 def get_status(diff, key):

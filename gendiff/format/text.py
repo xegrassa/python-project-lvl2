@@ -44,28 +44,29 @@ CHG = 'change'
 #         else:
 #             render += "{}{}: {}\n".format(indent, key, diff[key])
 #     render += indent[:-4] + '}\n'
-    # return render
+# return render
 
 
-def gen_string(diff, key, status):
+def gen_string(deep, diff, key, status):
+    indent = '    ' * deep
     if status == ADD:
         prefix = '+'
     elif status == DEL:
         prefix = '-'
-    elif status == NOT:
-        prefix = ' '
+    elif status == CHG:
+        return gen_string(deep, diff, key, DEL) + gen_string(deep, diff, key, ADD)
     else:
-        prefix = 'xz'
-    return "{} {}: {}\n".format(prefix, key, get_value(diff, key))
+        prefix = ' '
+    return "{}{} {}: {}\n".format(indent[:-2], prefix, key, get_value(diff, key))
 
 
 def render_text(diff, deep=1):
     indent = '    ' * deep
     render = '{\n'
     for key in diff:
-        # if get_status(diff, key) != ADD:
-        render+= gen_string(diff, key, get_status(diff,key) )
+        if isinstance(get_value(diff, key), dict):
+            render += "{}{}: {}".format(indent, key, render_text(get_value(diff, key), deep+1))
+            continue
+        render += gen_string(deep, diff, key, get_status(diff, key))
+    render += indent[:-4] + '}\n'
     return render
-
-
-
