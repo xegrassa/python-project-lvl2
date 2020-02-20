@@ -47,7 +47,6 @@ def main():
     file2 = parsers.parse_file(args.second_file)
     diff = generate_diff(file1, file2)
     print(args.format(diff))
-    # print(generate_diff(file1, file2))
 
 
 if __name__ == '__main__':
