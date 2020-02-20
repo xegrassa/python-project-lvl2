@@ -1,66 +1,63 @@
 {
-    "common": {
-        "value": {
-            "setting1": {
-                "value": "Value 1",
-                "change": "not"
-            },
-            "setting2": {
-                "value": "200",
-                "change": "del"
-            },
-            "setting3": {
-                "value": true,
-                "change": "not"
-            },
-            "setting6": {
-                "value": {
-                    "key": "value"
-                },
-                "change": "del"
-            },
-            "setting4": {
-                "value": "blah blah",
-                "change": "add"
-            },
-            "setting5": {
-                "value": {
+    "common": [
+        {
+            "setting1": [
+                "Value 1",
+                "not"
+            ],
+            "setting2": [
+                "200",
+                "del"
+            ],
+            "setting3": [
+                true,
+                "not"
+            ],
+            "setting4": [
+                "blah blah",
+                "add"
+            ],
+            "setting5": [
+                {
                     "key5": "value5"
                 },
-                "change": "add"
-            }
-        },
-        "change": "not"
-    },
-    "group1": {
-        "value": {
-            "baz": [
-                {
-                    "value": "bars",
-                    "change": "add"
-                },
-                {
-                    "value": "bas",
-                    "change": "del"
-                }
+                "add"
             ],
-            "foo": {
-                "value": "bar",
-                "change": "not"
-            }
+            "setting6": [
+                {
+                    "key": "value"
+                },
+                "del"
+            ]
         },
-        "change": "not"
-    },
-    "group2": {
-        "value": {
+        "not"
+    ],
+    "group1": [
+        {
+            "baz": [
+                [
+                    "bas",
+                    "bars"
+                ],
+                "change"
+            ],
+            "foo": [
+                "bar",
+                "not"
+            ]
+        },
+        "not"
+    ],
+    "group2": [
+        {
             "abc": "12345"
         },
-        "change": "del"
-    },
-    "group3": {
-        "value": {
+        "del"
+    ],
+    "group3": [
+        {
             "fee": "100500"
         },
-        "change": "add"
-    }
+        "add"
+    ]
 }

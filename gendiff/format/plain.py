@@ -18,14 +18,16 @@ def gen_string(value, key, status, path_keys=[]):
     elif status == DEL:
         return "Property '{}' was removed\n".format(key)
     elif status == CHG:
-        return "Property '{}' was changed. From '{}' to '{}'\n".format(key, value[0], value[1])
+        return ("Property '{}' was changed. From '{}' to '{}'\n"
+                .format(key, value[0], value[1]))
     return ''
 
 
 def render_plain(diff, path_keys=[]):
     render = ''
     for key in sorted(diff):
-        if get_status(diff, key) == NOT and isinstance(get_value(diff, key), dict):
+        if get_status(diff, key) == NOT and isinstance(get_value(diff, key),
+                                                       dict):
             path_keys.append(key)
             render += render_plain(get_value(diff, key), path_keys)
             path_keys.pop()

@@ -1,5 +1,4 @@
 import argparse
-import os.path
 from gendiff import parsers
 from gendiff import format
 

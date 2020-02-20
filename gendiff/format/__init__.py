@@ -16,5 +16,6 @@ def get_render(arg):
         return json
     if arg == PLAIN:
         return plain
-    msg = "invalid choice: '{}' (choose from 'text', 'json', 'plain')".format(arg)
+    msg = ("invalid choice: '{}' (choose from 'text', 'json', 'plain')".
+           format(arg))
     raise argparse.ArgumentTypeError(msg)

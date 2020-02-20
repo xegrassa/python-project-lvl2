@@ -14,10 +14,11 @@ def gen_string(indent, value, key, status):
     elif status == DEL:
         prefix = '-'
     elif status == CHG:
-        return  gen_string(indent, value[1], key, ADD) + gen_string(indent, value[0], key, DEL)
+        return (gen_string(indent, value[1], key, ADD) +
+                gen_string(indent, value[0], key, DEL))
     else:
         prefix = ' '
-    if value == None:
+    if value is None:
         return "{}{} {}: ".format(indent[:-2], prefix, key)
     return "{}{} {}: {}\n".format(indent[:-2], prefix, key, value)
 
@@ -30,6 +31,7 @@ def render_text(diff, deep=1):
             render += gen_string(indent, None, key, get_status(diff, key))
             render += render_text(get_value(diff, key), deep + 1)
         else:
-            render += gen_string(indent, get_value(diff, key), key, get_status(diff, key))
+            render += gen_string(indent, get_value(diff, key),
+                                 key, get_status(diff, key))
     render += indent[:-4] + '}\n'
     return render
