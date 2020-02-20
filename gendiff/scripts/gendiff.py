@@ -23,8 +23,10 @@ def generate_diff(prs_file1, prs_file2):
     equal_keys = set(prs_file1.keys()).intersection(set(prs_file2.keys()))
 
     for key in equal_keys:
-        if isinstance(prs_file1[key], dict) and isinstance(prs_file2[key], dict):
-            diff.update({key: (generate_diff(prs_file1[key], prs_file2[key]), NOT)})
+        if isinstance(prs_file1[key], dict) and isinstance(prs_file2[key],
+                                                           dict):
+            diff.update({key: (generate_diff(prs_file1[key],
+                                             prs_file2[key]), NOT)})
         elif prs_file1[key] == prs_file2[key]:
             diff.update(gen_key_process(prs_file1, (key,), NOT))
         else:
