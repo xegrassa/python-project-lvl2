@@ -13,6 +13,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
+  - make install
   - make lint
   - make test
 after_script:
