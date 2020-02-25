@@ -5,3 +5,4 @@ egrassa_gendiff.egg-info
 dist
 __pycache__/
 *.swp
+.idea
