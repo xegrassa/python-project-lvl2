@@ -8,18 +8,18 @@ NOT = 'not'
 CHG = 'change'
 
 
-def gen_string(value, key, status, path_keys=[]):
+def gen_string(value, key, status, path_keys=()):
     if path_keys:
-        key = '.'.join(path_keys) + '.' + key
+        path = '.'.join(path_keys + [key])
     if isinstance(value, dict):
         value = 'complex value'
     if status == ADD:
-        return "Property '{}' was added with value: '{}'\n".format(key, value)
+        return "Property '{}' was added with value: '{}'\n".format(path, value)
     elif status == DEL:
-        return "Property '{}' was removed\n".format(key)
+        return "Property '{}' was removed\n".format(path)
     elif status == CHG:
         return ("Property '{}' was changed. From '{}' to '{}'\n"
-                .format(key, value[0], value[1]))
+                .format(path, value[0], value[1]))
     return ''
 
 
