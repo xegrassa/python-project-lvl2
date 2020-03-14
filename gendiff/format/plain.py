@@ -8,9 +8,8 @@ NOT = 'not'
 CHG = 'change'
 
 
-def gen_string(value, key, status, path_keys=()):
-    if path_keys:
-        path = '.'.join(path_keys + [key])
+def gen_string(value, key, status, path_keys=None):
+    path = '.'.join(path_keys + [key])
     if isinstance(value, dict):
         value = 'complex value'
     if status == ADD:

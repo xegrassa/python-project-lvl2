@@ -3,6 +3,7 @@ from gendiff import parsers
 from gendiff import format
 from gendiff import build_diff
 
+
 def main():
     parser = argparse.ArgumentParser(description='Generate diff')
     parser.add_argument('first_file')
