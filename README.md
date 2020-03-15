@@ -21,8 +21,10 @@ Support: json, yaml, ini
 
 
 
-Diff between json files output TEXT format
+### Diff between json files output TEXT format
+
 <a href="https://asciinema.org/a/AZTSUs8rFR8JBl7ehMLdK0KQB" target="_blank"><img src="https://asciinema.org/a/AZTSUs8rFR8JBl7ehMLdK0KQB.svg" /></a>
 
-Diff between json files output JSON format
+### Diff between json files output JSON format
+
 [![asciicast](https://asciinema.org/a/294423.svg)](https://asciinema.org/a/294423)
