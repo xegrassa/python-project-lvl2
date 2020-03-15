@@ -21,17 +21,8 @@ Support: json, yaml, ini
 
 
 
-
+Diff between json files output TEXT format
 <a href="https://asciinema.org/a/AZTSUs8rFR8JBl7ehMLdK0KQB" target="_blank"><img src="https://asciinema.org/a/AZTSUs8rFR8JBl7ehMLdK0KQB.svg" /></a>
-
-5-step
-[![asciicast](https://asciinema.org/a/292649.svg)](https://asciinema.org/a/292649)
-
-6-step
-[![asciicast](https://asciinema.org/a/293788.svg)](https://asciinema.org/a/293788)
-
-7-step
-[![asciicast](https://asciinema.org/a/294066.svg)](https://asciinema.org/a/294066)
 
 Diff between json files output JSON format
 [![asciicast](https://asciinema.org/a/294423.svg)](https://asciinema.org/a/294423)
