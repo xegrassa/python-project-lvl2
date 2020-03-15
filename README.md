@@ -18,13 +18,7 @@ Support: json, yaml, ini
 
 `gendiff [-f FORMAT] first_file second_file`
 
-Module:
 
-```js
-import gendiff from "gendiff-greybutton";
-
-gendiff(path / to / file / 1, path / to / file / 2, format);
-```
 
 format: 'diff' is default, 'plain', 'json'
 
