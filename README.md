@@ -11,7 +11,7 @@ Support: json, yaml, ini
 
 ### Install
 
-pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ egrassa-gendiff`
+`pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ egrassa-gendiff`
 
 
 ### Use
