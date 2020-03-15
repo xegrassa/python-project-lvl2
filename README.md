@@ -11,9 +11,8 @@ Support: json, yaml, ini
 
 ### Install
 
-CLI: `npm install -g gendiff-greybutton`
+pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ egrassa-gendiff`
 
-Module: `npm install --save gendiff-greybutton`
 
 ### Use
 
