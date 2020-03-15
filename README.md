@@ -20,7 +20,7 @@ Support: json, yaml, ini
 
 
 
-format: 'diff' is default, 'plain', 'json'
+
 
 <a href="https://asciinema.org/a/AZTSUs8rFR8JBl7ehMLdK0KQB" target="_blank"><img src="https://asciinema.org/a/AZTSUs8rFR8JBl7ehMLdK0KQB.svg" /></a>
 
@@ -33,5 +33,5 @@ format: 'diff' is default, 'plain', 'json'
 7-step
 [![asciicast](https://asciinema.org/a/294066.svg)](https://asciinema.org/a/294066)
 
-Diff between json files
+Diff between json files output JSON format
 [![asciicast](https://asciinema.org/a/294423.svg)](https://asciinema.org/a/294423)
