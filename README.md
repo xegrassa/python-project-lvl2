@@ -16,7 +16,7 @@ Support: json, yaml, ini
 
 ### Use
 
-CLI: `gendiff-greybutton --help`
+`gendiff [-f FORMAT] first_file second_file`
 
 Module:
 
